@@ -8,9 +8,9 @@ import android.os.Bundle
 [ ] Fragmento agregar
 [ ] Crear interfaz
 [ ] Room
+    [ ] Entity
     [ ] DAO
     [ ] Database
-    [ ] Entity
 [ ] Fragmento listado
 [ ] Recycler View
 
