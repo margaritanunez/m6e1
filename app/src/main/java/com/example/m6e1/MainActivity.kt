@@ -6,7 +6,6 @@ import android.os.Bundle
 /*
 [ ] Navigation
 [ ] Fragmento agregar
-[ ] Fragmento listado
 [ ] Crear interfaz
 [ ] Room
     [ ] DAO
