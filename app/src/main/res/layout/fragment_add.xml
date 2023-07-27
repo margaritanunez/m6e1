@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF9D76"
     tools:context=".AddFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <EditText
+        android:id="@+id/taskNameTxt"
+        android:layout_width="246dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="100dp"
+        android:background="#EF4339"
+        android:backgroundTint="#D14F48"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Nombre tarea"
+        android:inputType="text"
+        android:textColorHint="#EBFFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/addTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#D14F48"
+        android:text="Agregar tarea"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/taskNameTxt"
+        app:layout_constraintStart_toStartOf="@+id/taskNameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/taskNameTxt" />
+</androidx.constraintlayout.widget.ConstraintLayout>
