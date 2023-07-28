@@ -34,6 +34,7 @@ class AddFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAddBinding.inflate(layoutInflater, container, false)
         initListener()
+        loadTasks()
         return binding.root
     }
 
@@ -45,8 +46,16 @@ class AddFragment : Fragment() {
     }
 
     private fun saveTask(texto: String) {
-        val dao= TaskDataBase.getDataBase(requireContext())!!.getTaskDao()
+        val dao= TaskDataBase.getDataBase(requireContext()).getTaskDao()
         val task = Task(texto)
         GlobalScope.launch { dao.insertTask(task)}
+    }
+
+    private fun loadTasks() {
+        val dao = TaskDataBase.getDataBase(requireContext()).getTaskDao()
+        val tasks = dao.getTasks().observe(requireActivity()){
+            val tasksAsText = it.joinToString("\n") { it.nombreTarea }
+            binding.textView.text = tasksAsText
+        }
     }
 }
