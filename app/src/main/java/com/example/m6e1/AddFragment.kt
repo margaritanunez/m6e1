@@ -22,6 +22,7 @@ private const val ARG_PARAM2 = "param2"
 class AddFragment : Fragment() {
 
     private lateinit var binding: FragmentAddBinding
+    private lateinit var repository : Repository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +34,14 @@ class AddFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAddBinding.inflate(layoutInflater, container, false)
+        initRepository()
         initListener()
         loadTasks()
         return binding.root
+    }
+
+    private fun initRepository() {
+        repository = Repository(TaskDataBase.getDataBase(requireContext()).getTaskDao())
     }
 
     private fun initListener() {
@@ -46,14 +52,12 @@ class AddFragment : Fragment() {
     }
 
     private fun saveTask(texto: String) {
-        val dao= TaskDataBase.getDataBase(requireContext()).getTaskDao()
         val task = Task(texto)
-        GlobalScope.launch { dao.insertTask(task)}
+        GlobalScope.launch { repository.insertarTarea(task)}
     }
 
     private fun loadTasks() {
-        val dao = TaskDataBase.getDataBase(requireContext()).getTaskDao()
-        val tasks = dao.getTasks().observe(requireActivity()){
+        repository.getTareas().observe(requireActivity()){
             val tasksAsText = it.joinToString("\n") { it.nombreTarea }
             binding.textView.text = tasksAsText
         }
