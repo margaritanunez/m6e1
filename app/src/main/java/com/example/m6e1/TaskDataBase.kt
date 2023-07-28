@@ -14,7 +14,7 @@ abstract class TaskDataBase : RoomDatabase(){
         @Volatile
         private var INSTANCE: TaskDataBase? = null
 
-        fun getDataBase(context: Context): TaskDataBase? {
+        fun getDataBase(context: Context): TaskDataBase {
             val tempInstance = INSTANCE
             if (tempInstance != null){
                 return tempInstance
